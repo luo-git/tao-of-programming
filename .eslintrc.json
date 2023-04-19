@@ -15,7 +15,11 @@
               {
                 "sourceTag": "*",
                 "onlyDependOnLibsWithTags": ["*"]
-              }
+              },
+              {
+                "sourceTag": "frontend",
+                "allowedExternalImports": ["backend"]
+              },
             ]
           }
         ]
