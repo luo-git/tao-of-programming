@@ -1,5 +1,5 @@
 import { initTRPC } from '@trpc/server';
-import { postsRouter } from './routers';
+import { quotesRouter } from './routers/quotesRouter';
 
 /**
  * Initialization of tRPC backend
@@ -8,5 +8,5 @@ import { postsRouter } from './routers';
 export const t = initTRPC.create();
 
 export const appRouter = t.router({
-  posts: postsRouter,
+  quotes: quotesRouter,
 });

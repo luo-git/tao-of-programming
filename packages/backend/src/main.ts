@@ -3,7 +3,8 @@ import cors from 'cors';
 import * as path from 'path';
 import * as trpcExpress from '@trpc/server/adapters/express';
 import { inferAsyncReturnType, initTRPC } from '@trpc/server';
-import { postsRouter } from './routers';
+import { quotesRouter } from './routers/quotesRouter';
+import { openingsRouter } from './routers/openingsRouter';
 
 // created for each request
 const createContext = ({
@@ -15,14 +16,18 @@ type Context = inferAsyncReturnType<typeof createContext>;
 const t = initTRPC.context<Context>().create();
 
 const appRouter = t.router({
-  posts: postsRouter,
+  quotes: quotesRouter,
+  openings: openingsRouter,
 });
 
 const app = express();
 
 app.use(
   cors({
-    origin: ['http://localhost:4200'],
+    origin: [
+      'http://localhost:4200',
+      'https://tao-of-programming-frontend.onrender.com',
+    ],
   })
 );
 

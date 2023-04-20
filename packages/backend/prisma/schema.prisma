@@ -1,0 +1,38 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// An opening statement for a collection of quotes
+model Opening {
+  id Int @id @default(autoincrement())
+
+  topic   String
+  content String
+
+  quotes Quote[]
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime?
+}
+
+// A single quote
+model Quote {
+  id Int @id @default(autoincrement())
+
+  openingId Int?
+  opening   Opening? @relation(fields: [openingId], references: [id])
+
+  content String
+  tags    String[]
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime?
+}
