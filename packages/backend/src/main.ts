@@ -4,7 +4,8 @@ import * as path from 'path';
 import * as trpcExpress from '@trpc/server/adapters/express';
 import { inferAsyncReturnType, initTRPC } from '@trpc/server';
 import { quotesRouter } from './routers/quotesRouter';
-import { openingsRouter } from './routers/openingsRouter';
+import { generatorRouter } from './routers/generatorRouter';
+import { settingsRouter } from './routers/settingsRouter';
 
 // created for each request
 const createContext = ({
@@ -16,8 +17,9 @@ type Context = inferAsyncReturnType<typeof createContext>;
 const t = initTRPC.context<Context>().create();
 
 const appRouter = t.router({
+  generator: generatorRouter,
   quotes: quotesRouter,
-  openings: openingsRouter,
+  setting: settingsRouter,
 });
 
 const app = express();

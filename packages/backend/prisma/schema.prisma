@@ -10,25 +10,15 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// An opening statement for a collection of quotes
-model Opening {
-  id Int @id @default(autoincrement())
-
-  topic   String
-  content String
-
-  quotes Quote[]
-
-  createdAt DateTime  @default(now())
-  updatedAt DateTime?
+model Settings {
+  id           Int @id
+  dailyLimit   Int
+  currentCount Int
 }
 
 // A single quote
 model Quote {
   id Int @id @default(autoincrement())
-
-  openingId Int?
-  opening   Opening? @relation(fields: [openingId], references: [id])
 
   content String
   tags    String[]

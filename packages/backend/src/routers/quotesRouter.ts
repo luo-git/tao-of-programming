@@ -15,7 +15,24 @@ export const quotesRouter = t.router({
     if (!foundQuote) {
       throw new TRPCError({
         code: 'BAD_REQUEST',
-        message: 'No post with the specified id found!',
+        message: 'No quote with the specified id found!',
+      });
+    }
+
+    return foundQuote;
+  }),
+
+  getFirst: t.procedure.query(async () => {
+    const foundQuote = await prisma.quote.findFirst({
+      orderBy: {
+        createdAt: 'desc',
+      },
+    });
+
+    if (!foundQuote) {
+      throw new TRPCError({
+        code: 'BAD_REQUEST',
+        message: 'No quote found!',
       });
     }
 

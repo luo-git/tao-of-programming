@@ -1,0 +1,31 @@
+.main-quote {
+  font-size: 2em;
+}
+
+.quote-container {
+  padding-left: 10%;
+  padding-right: 10%;
+  display: flex;
+  flex-direction: column;
+}
+
+.quote-tags {
+  text-align: right;
+}
+
+
+.speech-container {
+  display: flex;
+  justify-content: right;
+  gap: 10px;
+}
+
+@media (max-width: 767px) {
+  .main-quote {
+    font-size: 1em;
+  }
+
+  .speech-container {
+    flex-direction: column;
+  }
+}

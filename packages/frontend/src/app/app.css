@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700&display=swap');
+
+:root {
+  --bg-primary: #ffeec5;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-primary);
+}
+
+.rounded-font {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.rounded-font-sm {
+  font-size: 0.8em;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
