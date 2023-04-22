@@ -12,7 +12,7 @@ export function App() {
     trpc.createClient({
       links: [
         httpBatchLink({
-          url: process.env.BACKEND_URL ?? 'http://localhost:3333/api',
+          url: process.env.NX_BACKEND_URL ?? 'http://localhost:3333/api',
         }),
       ],
     })
