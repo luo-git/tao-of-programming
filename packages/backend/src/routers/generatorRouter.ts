@@ -1,3 +1,5 @@
+import cron from 'node-cron';
+
 import { z } from 'zod';
 import { TRPCError } from '@trpc/server';
 import { t } from '../trpc';
@@ -92,4 +94,16 @@ export const generatorRouter = t.router({
 
     return result;
   }),
+});
+
+// Reset count every day
+cron.schedule('0 0 * * *', async () => {
+  await prisma.settings.update({
+    where: {
+      id: SETTING_ID,
+    },
+    data: {
+      currentCount: 0,
+    },
+  });
 });
